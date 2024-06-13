@@ -1,0 +1,30 @@
+<head>
+    <style>
+        
+    </style>
+</head>
+<!-- đây là danh sách khách hàng -->
+
+<div class="row">
+    <div class="col-sm-6">
+        <h5 class="mb-0">THÔNG TIN KHÁCH HÀNG</h5>
+        <tr >
+            <td>Tên: {{ $hoaDon->khach_hang->ho_ten }},</td>
+            <td>Email: {{ $KhachHang->email }},</td>
+            <td>Số điện thoại: {{ $KhachHang->so_dien_thoai }},</td>
+            <td>Địa chỉ: {{ $KhachHang->dia_chi }},</td>
+        </tr>
+    </div>
+    <div class="col-sm-6">
+        <tr >
+            <h5 class="mb-0">NỘI DUNG HÀNG</h5>
+            <td>{{ $KhachHang->ho_ten }},</td>
+            <td>{{ $KhachHang->email }},</td>
+            <td>{{ $KhachHang->so_dien_thoai }},</td>
+            <td>{{ $KhachHang->dia_chi }},</td>
+        </tr>
+    </div>
+    <h5 class="mb-0">TIỀN THU NGƯỜI NHẬN</h5>
+
+</div>
+
