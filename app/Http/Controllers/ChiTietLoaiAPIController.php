@@ -8,10 +8,10 @@ class ChiTietLoaiAPIController extends Controller
 {
     public function DanhSachChiTietLoai()
     {
-        $chitietloai = ChiTietLoai::all();
+        $chi_tiet_loai = ChiTietLoai::all();
         return response()->json([
             'success' => true,
-            'data' => $chitietloai
+            'data' => $chi_tiet_loai
         ]);
     }
 }

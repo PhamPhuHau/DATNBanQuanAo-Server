@@ -6,6 +6,8 @@ use App\Http\Controllers\KhachHangAPIController;
 use  App\Http\Controllers\SanPhamAPIController;
 use  App\Http\Controllers\BinhLuanAPIController;
 use  App\Http\Controllers\LoaiAPIController;
+use  App\Http\Controllers\ChiTietLoaiAPIController;
+
 use  App\Http\Controllers\HoaDonAPIController;
 use  App\Http\Controllers\DanhGiaAPIController;
 use App\Http\Controllers\SlideShowAPIController;
@@ -70,6 +72,8 @@ route::post('danh-sach-binh-luan-cap-hai', [BinhLuanAPIController::class, 'DanhS
 //-----------------LOAI----------------------------
 
 route::get('danh-sach-loai',[LoaiAPIController::class,'DanhSachLoai']);
+route::get('danh-sach-chi-tiet-loai',[ChiTietLoaiAPIController::class,'DanhSachChiTietLoai']);
+
 
 //---------------------HOÁ ĐƠN-------------------
 

@@ -43,6 +43,8 @@ class SanPhamAPIController extends Controller
                         // Nếu có, in ra thông tin
             $ctsp->size;
             $ctsp->loai;
+            $ctsp->chi_tiet_loai;
+
             $ctsp->mau;
             $ctsp->chat_lieu;
             $ctsp->kieu_do;
