@@ -17,7 +17,7 @@ class HoaDonController extends Controller
         {
             $hd->khach_hang;
         }
-     
+
         return view('HOADON/danh-sach',compact('hoaDon'));
     }
 
@@ -28,7 +28,7 @@ class HoaDonController extends Controller
         {
             $cthd->chi_tiet_san_pham;
         }
-     
+
         return view('HOADON/danh-sach-chi-tiet',compact('chiTietHoaDon'));
     }
 
@@ -86,7 +86,7 @@ class HoaDonController extends Controller
         {
             $hd->khach_hang;
         }
-     
+
         return view('HOADON/danh-sach',compact('hoaDon'));
     }
 
@@ -97,7 +97,7 @@ class HoaDonController extends Controller
         {
             $hd->khach_hang;
         }
-     
+
         return view('HOADON/danh-sach',compact('hoaDon'));
     }
 }

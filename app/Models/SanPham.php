@@ -25,6 +25,10 @@ class SanPham extends Model
     {
         return $this->belongsTo(Loai::class);
     }
+    public function chi_tiet_loai()
+    {
+        return $this->belongsTo(ChiTietLoai::class);
+    }
 
     public function chi_tiet_san_pham()
     {

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('san_pham_id');
             $table->foreignId('mau_id');
             $table->foreignId('size_id');
+            $table->foreignId('kieu_do_id');
+            $table->foreignId('chat_lieu_id');
             $table->integer('so_luong');
             $table->softDeletes();
             $table->timestamps();

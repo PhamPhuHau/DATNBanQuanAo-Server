@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('nhap_hang_id');
             $table->foreignId('san_pham_id');
+            $table->foreignId('nha_cung_cap_id');
             $table->double('gia_nhap');
             $table->double('gia_ban');
             $table->integer('so_luong');

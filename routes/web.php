@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SizeController;
 
 use App\Http\Controllers\MauController;
+use App\Http\Controllers\ChatLieuController;
+use App\Http\Controllers\KieuDoController;
+
 use App\Http\Controllers\NhaCungCapController;
 
 use App\Http\Controllers\SanPhamController;
@@ -15,7 +18,7 @@ use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SlideShowController;
-
+use App\Http\Controllers\ChiTietLoaiController;
 
 
 
@@ -45,19 +48,28 @@ Route::prefix('san-pham')->group(function(){
         Route::post('nhap-hang',[SanPhamController::class,'xuLyThemMoi'])->name('xl-nhap-hang');
         Route::get('nhap-so-luong',[SanPhamController::class,'themSoLuong'])->name('nhap-so-luong');
         Route::get('lay-thong-tin-san-pham-loai',[SanPhamController::class,'layThongTinLoai'])->name('lay-thong-tin-san-pham-loai');
+        Route::get('lay-thong-tin-san-pham-chi-tiet-loai',[SanPhamController::class,'layThongTinChiTietLoai'])->name('lay-thong-tin-san-pham-chi-tiet-loai');
+
         Route::get('lay-thong-tin-san-pham-mau',[SanPhamController::class,'layThongTinMau'])->name('lay-thong-tin-san-pham-mau');
         Route::get('lay-thong-tin-san-pham-size',[SanPhamController::class,'layThongTinSize'])->name('lay-thong-tin-san-pham-size');
+        Route::get('lay-thong-tin-san-pham-chat-lieu',[SanPhamController::class,'layThongTinChatLieu'])->name('lay-thong-tin-san-pham-chat-lieu');
+        Route::get('lay-thong-tin-san-pham-kieu-do',[SanPhamController::class,'layThongTinKieuDo'])->name('lay-thong-tin-san-pham-kieu-do');
+
         Route::get('lay-thong-tin-san-pham-ten',[SanPhamController::class,'layThongTinTen'])->name('lay-thong-tin-san-pham-ten');
+        Route::post('them-so-luong/{id}', [SanPhamController::class, 'themSoLuong'])->name('them-so-luong');
 
         Route::post('xu-ly-them-so-luong',[SanPhamController::class,'xuLyThemSoLuong'])->name('xu-ly-them-so-luong');
 
         Route::get('/xoa/{id}',[SanPhamController::class, 'Delete'])->name('xoa');
+        Route::delete('xoa-chi-tiet-san-pham/{id}', [SanPhamController::class, 'xoaChiTietSanPham'])->name('xoa-chi-tiet-san-pham');
 
         Route::get('lich-su-nhap-hang',[SanPhamController::class,'lsNhapHang'])->name('lich-su-nhap-hang');
         Route::get('lich-su-chi-tiet-nhap-hang/{id}',[SanPhamController::class,'lsChiTietNhapHang'])->name('lich-su-chi-tiet-nhap-hang');
         Route::get('san-pham/{id}',[SanPhamController::class,'view_Chi_Tiet'])->name('chi-tiet-san-pham');
         Route::post('san-pham/{id}',[SanPhamController::class,'them_Anh'])->name('them-anh');
         Route::get('xoa-anh/{id}', [SanPhamController::class, 'xoa_Anh'])->name('xoa-anh');
+        Route::post('cap-nhat-thong-tin/{id}', [SanPhamController::class, 'capNhatThongTin'])->name('cap-nhat-thong-tin');
+
         Route::post("sua",[SanPhamController::class,'xu_Ly_Sua'])->name('sua');
     });
 });
@@ -73,6 +85,19 @@ Route::prefix('loai')->group(function(){
         Route::get("/xoa/{id}",[LoaiController::class, 'Delete'])->name('xoa');
     });
 });
+/*-------------------CHITIETLOAI-----------------*/
+Route::prefix('chi-tiet-loai')->group(function() {
+    Route::name('chi-tiet-loai.')->group(function() {
+        Route::get('danh-sach/{loai_id}', [ChiTietLoaiController::class, 'view'])->name('danh-sach');
+        Route::get('them/{loai_id}', [ChiTietLoaiController::class, 'themMoi'])->name('them');
+        Route::post('them', [ChiTietLoaiController::class, 'xuLyThemMoi'])->name('xl-them');
+        Route::get('cap-nhat/{id}', [ChiTietLoaiController::class, 'edit'])->name('cap-nhat');
+        // Route::post('cap-nhat/{id}', [ChiTietLoaiController::class, 'xlEdit'])->name('xl-cap-nhat');
+        Route::post('xl-cap-nhat/{id}', [ChiTietLoaiController::class, 'xlEdit'])->name('xl-cap-nhat');
+
+        Route::get('xoa/{id}', [ChiTietLoaiController::class, 'delete'])->name('xoa');
+    });
+});
 /*-----------------------MAU-------------------- */
 Route::prefix('mau')->group(function(){
     Route::name('mau.')->group(function(){
@@ -85,6 +110,34 @@ Route::prefix('mau')->group(function(){
     Route::post("/cap-nhat/{id}",[MauController::class, 'xlEdit'])->name('xl-cap-nhat');
 
     Route::get("/xoa/{id}",[MauController::class, 'Delete'])->name('xoa');
+});
+});
+/*-----------------------------------CHATLIEU------------------------------------*/
+Route::prefix('chat-lieu')->group(function(){
+    Route::name('chat-lieu.')->group(function(){
+
+    Route::get('/danh-sach',[ChatLieuController::class,'View'])->name('danh-sach');
+    Route::get("/them",[ChatLieuController::class, 'themMoi'])->name('them');
+    Route::post("/them",[ChatLieuController::class, 'xuLyThemMoi'])->name('xl-them');
+
+    Route::get("/cap-nhat/{id}",[ChatLieuController::class, 'Edit'])->name('cap-nhat');
+    Route::post("/cap-nhat/{id}",[ChatLieuController::class, 'xlEdit'])->name('xl-cap-nhat');
+
+    Route::get("/xoa/{id}",[ChatLieuController::class, 'Delete'])->name('xoa');
+});
+});
+/*-----------------------------------KIEUDO------------------------------------*/
+Route::prefix('kieu-do')->group(function(){
+    Route::name('kieu-do.')->group(function(){
+
+    Route::get('/danh-sach',[KieuDoController::class,'View'])->name('danh-sach');
+    Route::get("/them",[KieuDoController::class, 'themMoi'])->name('them');
+    Route::post("/them",[KieuDoController::class, 'xuLyThemMoi'])->name('xl-them');
+
+    Route::get("/cap-nhat/{id}",[KieuDoController::class, 'Edit'])->name('cap-nhat');
+    Route::post("/cap-nhat/{id}",[KieuDoController::class, 'xlEdit'])->name('xl-cap-nhat');
+
+    Route::get("/xoa/{id}",[KieuDoController::class, 'Delete'])->name('xoa');
 });
 });
 /*-----------------------------------SIZE-----------------------------------------*/

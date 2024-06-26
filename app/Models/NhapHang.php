@@ -9,8 +9,8 @@ class NhapHang extends Model
 {
     use HasFactory;
     protected $table = 'nhap_hang';
-    public function nha_cung_cap()
+    public function chi_tiet_nhap_hang()
     {
-        return $this->belongsTo(NhaCungCap::class);
+        return $this->hasMany(ChiTietNhapHang::class, 'nhap_hang_id');
     }
 }

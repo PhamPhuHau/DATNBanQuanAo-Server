@@ -3,7 +3,7 @@
 
 <div class="container-fluid pt-4 px-4 trangchu">
     <div class="navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-        
+
         <div class="row">
             <div class="col-sm-4 doanhThuTren">
                 <h3>Thành viên</h3>
@@ -18,10 +18,10 @@
                 <h1>{{$nhapHang->sum('tong_tien')}} </h1>
             </div>
         </div>
-       
+
            <div class='doanhThuGiua'>
            <div class="row">
-            
+
                 <div class="col-sm-6 TongDoanhThu" id="TongDoanhThu">
                     <p>Tổng doanh thu năm {{$namHienTai}} là: {{ $tongDoanhThu }} VND</p>
                 </div>
@@ -35,11 +35,11 @@
             </select>
                 </div>
             </div>
-            
-                
+
+
                 <canvas id="SoDoCot"  aria-label="Column Chart" role="img"></canvas>
             </div>
-        
+
         <div class="doanhThuDuoi">
         <div class="row">
             <div class="col-sm-6">
@@ -52,12 +52,12 @@
                     @endif
                     <br>
                     <h5 style=" margin-top: 10px">Họ tên: {{$hoaDonNhieuNhat->khach_hang->ho_ten}}</h5>
-                    
-                    <h5>Email: {{$hoaDonNhieuNhat->khach_hang->email}}</h5> 
+
+                    <h5>Email: {{$hoaDonNhieuNhat->khach_hang->email}}</h5>
                     @endif
             </div>
             <div class="col-sm-6">
-            
+
             @if($chiTietHoaDon)
                 <h3>Sản phẩm bán chạy</h3>
                 @if($chiTietHoaDon->chi_tiet_san_pham->san_pham->hinh_anh)
@@ -68,8 +68,8 @@
                     @endif
                     <br>
                         <h5 style=" margin-top: 10px">Tên sản phẩm: {{$chiTietHoaDon->chi_tiet_san_pham->san_pham->ten}}</h5>
-                        
-                        <h5>Giá bán sản phẩm: {{$chiTietHoaDon->chi_tiet_san_pham->san_pham->gia_ban}} VNĐ</h5> 
+
+                        <h5>Giá bán sản phẩm: {{$chiTietHoaDon->chi_tiet_san_pham->san_pham->gia_ban}} VNĐ</h5>
                 @endif
             @endif
             </div>
@@ -170,8 +170,8 @@ function ThayDoiBieuDo(Nam) {
 `);
         itemDataBar = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         if (response.data && response.data.length > 0) {
-           
-            for (const item of response.data) { 
+
+            for (const item of response.data) {
                 console.log(new Date(item.created_at).getMonth());
                 // Kiểm tra năm của mỗi item
                 if (new Date(item.created_at).getFullYear() == Nam) {
@@ -203,7 +203,7 @@ function ThayDoiBieuDo(Nam) {
                             break;
                     }
 
-                    
+
                 }
             }
         } else {
@@ -213,7 +213,7 @@ function ThayDoiBieuDo(Nam) {
 
                     // Update the chart data and redraw
                     chart.data.datasets[0].data = itemDataBar;
-                   
+
                     chart.update();
     });
 }
@@ -276,7 +276,7 @@ function ThayDoiBieuDo(Nam) {
 
     //----------------------------SƠ ĐỒ CỘT----------------------------------
     let labelsBar = ['tháng 1', 'tháng 2', 'tháng 3', 'tháng 4', 'tháng 5', 'tháng 6', 'tháng 7', 'tháng 8', 'tháng 9', 'tháng 10', 'tháng 11', 'tháng 12'];
-   
+
     const dataBar = {
         labels: labelsBar,
         datasets: [{
@@ -320,7 +320,7 @@ function ThayDoiBieuDo(Nam) {
     );
 
 
- 
+
 </script>
 
 
@@ -335,6 +335,9 @@ function ThayDoiBieuDo(Nam) {
                     <a href="{{ Route('loai.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>LOẠI</a>
                     <a href="{{ Route('mau.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>MÀU</a>
                     <a href="{{ Route('size.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>SIZE</a>
+                    <a href="{{ Route('chat-lieu.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>CHẤT LIỆU</a>
+                    <a href="{{ Route('kieu-do.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>KIỂU ĐỒ</a>
+
                     <a href="{{ Route('nha-cung-cap.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-home me-2"></i>NHÀ CUNG CẤP</a>
 
 
@@ -343,7 +346,6 @@ function ThayDoiBieuDo(Nam) {
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ Route('san-pham.nhap-hang') }}" class="dropdown-item">MỚI</a>
                             <a href="{{ Route('san-pham.lich-su-nhap-hang') }}" class="dropdown-item">LỊCH SỬ NHẬP HÀNG</a>
-                            <a href="{{ Route('san-pham.nhap-so-luong') }}" class="dropdown-item">THÊM SỐ LUỌNG</a>
                         </div>
                     </div>
                     <a href="{{ Route('hoa-don.danh-sach') }}" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>HÓA ĐƠN</a>

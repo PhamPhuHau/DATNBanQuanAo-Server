@@ -19,6 +19,8 @@ return new class extends Migration
             $table->double('gia_ban');
             $table->integer('so_luong');
             $table->foreignId('loai_id');
+            $table->foreignId('chi_tiet_loai_id');
+
             $table->foreignId('nha_cung_cap_id');
             $table->string('thong_tin',5000)->nullable();
             $table->double('so_sao')->nullable();

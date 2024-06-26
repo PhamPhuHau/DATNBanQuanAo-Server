@@ -27,7 +27,7 @@
                             <tbody>
                                 <tr>
                                     <!-- <td><input class="form-check-input" type="checkbox"></td> -->
-                                 
+
                                     <td>
                                         @if($KhachHang->avatar)
                                         <?php $hinhAnhMinId = $KhachHang->min('id'); ?>
@@ -36,16 +36,16 @@
                                         @endif
                                     </td>
                                     <td>{{ $KhachHang->id }}</td>
-                                    
+
                                     <td>{{ $KhachHang->ho_ten }}</td>
-                                    <td>{{ $KhachHang->email }}</td>    
+                                    <td>{{ $KhachHang->email }}</td>
                                     <td>{{ $KhachHang->so_dien_thoai }}</td>
                                     <td>{{ $KhachHang->dia_chi }}</td>
-                                    
+
                                     <td><a class="btn btn-outline-danger" href="{{ route('tai-khoan.khoa',['id'=>$KhachHang->id]) }}">Khoá</a></td>
-                                   
+
                                 </tr>
-                                
+
                             </tbody>
                             @endforeach
                         </table>
@@ -82,7 +82,7 @@
                             <thead>
                                 <tr class="text-dark">
                                     <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
-                                   
+
                                     <th scope="col">ID</th>
                                     <th scope="col">TÊN ĐĂNG NHẬP</th>
                                     <th></th>
@@ -92,15 +92,15 @@
                             <tbody>
                                 <tr>
                                     <!-- <td><input class="form-check-input" type="checkbox"></td> -->
-                                   
+
                                     <td>{{ $QuanLy->id }}</td>
                                     <td>{{ $QuanLy->ten_dang_nhap }}</td>
-                                   
-                                    
+
+
                                     <td><a class="btn btn-outline-primary" href="{{ route('tai-khoan.cap-nhat',['id'=>$QuanLy->id]) }}">Cập nhật mật khẩu</a>
                                         <a class="btn btn-outline-danger" href="{{ route('tai-khoan.xoa',['id'=>$QuanLy->id]) }}">xoá</a></td>
                                 </tr>
-                                
+
                             </tbody>
                             @endforeach
                         </table>
@@ -120,23 +120,28 @@
 </div>
 @endsection
 @section('chon')
-<a href="/" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>THỐNG KÊ</a>	
-	<a href="{{ Route('san-pham.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-laptop me-2"></i>SẢN PHẨM</a>
-                    <a href="{{ Route('loai.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>LOẠI</a>
+<a href="/" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>THỐNG KÊ</a>
+<a href="{{ Route('san-pham.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-laptop me-2"></i>SẢN PHẨM</a>
+<a href="{{ Route('loai.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>LOẠI</a>
                     <a href="{{ Route('mau.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>MÀU</a>
                     <a href="{{ Route('size.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>SIZE</a>
-                    <a href="{{ Route('nha-cung-cap.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-home me-2"></i>NHÀ CUNG CẤP</a>
-	<div class="nav-item dropdown ">
+                    <a href="{{ Route('chat-lieu.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>CHẤT LIỆU</a>
+                    <a href="{{ Route('kieu-do.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>KIỂU ĐỒ</a>
+
+                    <a href="{{ Route('nha-cung-cap.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-home me-2"></i>NHÀ CUNG CẤP</a>
+
+
+                    <div class="nav-item dropdown ">
                         <a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown"><i class="fa fa-th me-2"></i>NHẬP HÀNG</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ Route('san-pham.nhap-hang') }}" class="dropdown-item">MỚI</a>
                             <a href="{{ Route('san-pham.lich-su-nhap-hang') }}" class="dropdown-item">LỊCH SỬ NHẬP HÀNG</a>
-                            <a href="{{ Route('san-pham.nhap-so-luong') }}" class="dropdown-item">THÊM SỐ LƯỢNG</a>
                         </div>
-						<a href="{{ Route('hoa-don.danh-sach') }}" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>HÓA ĐƠN</a>
+                    </div>
+                    <a href="{{ Route('hoa-don.danh-sach') }}" class="nav-item nav-link "><i class="far fa-file-alt me-2"></i>HÓA ĐƠN</a>
                     <a href="{{ Route('tai-khoan.danh-sach') }}" class="nav-item nav-link active"><i class="fa fa-regular fa-user me-2"></i>TÀI KHOẢN</a>
                     <a href="{{ Route('binh-luan.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-regular fa-envelope me-2"></i>BÌNH LUẬN</a>
-					<a href="{{ Route('slideshow.danh-sach') }}" class="nav-item nav-link "><i class="fa fa-laptop me-2"></i>SLIDESHOW</a>
+                    <a href="{{ Route('slideshow.danh-sach') }}" class="nav-item nav-link"><i class="fa fa-laptop me-2"></i>SLIDESHOW</a>
 
 
 @endsection

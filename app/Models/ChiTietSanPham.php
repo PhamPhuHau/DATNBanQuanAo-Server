@@ -13,11 +13,20 @@ class ChiTietSanPham extends Model
     public function loai(){
         return $this->belongsTo(Loai::class);
     }
+    public function chi_tiet_loai(){
+        return $this->belongsTo(ChiTietLoai::class);
+    }
     public function mau(){
         return $this->belongsTo(Mau::class);
     }
     public function size(){
         return $this->belongsTo(Size::class);
+    }
+    public function chat_lieu(){
+        return $this->belongsTo(ChatLieu::class);
+    }
+    public function kieu_do(){
+        return $this->belongsTo(KieuDo::class);
     }
 
     public function san_pham() {

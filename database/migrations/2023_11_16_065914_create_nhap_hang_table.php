@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('nhap_hang', function (Blueprint $table) {
             $table->id();
             $table->double('tong_tien');
-            $table->foreignId('nha_cung_cap_id');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -1,4 +1,4 @@
-@extends('ADMIN/index')
+<!-- @extends('ADMIN/index')
 @section('content')
 <form action="{{ route('san-pham.xu-ly-them-so-luong') }}" method="post">
     @csrf
@@ -24,8 +24,11 @@
                             <th scope="col">GIÁ NHẬP</th>
                             <th scope="col">GIÁ BÁN</th>
                             <th scope="col">LOẠI</th>
+                            <th scope="col">CHI TIẾT LOẠI</th>
                             <th scope="col">MÀU</th>
                             <th scope="col">SIZE</th>
+                            <th scope="col">CHẤT LIỆU</th>
+                            <th scope="col">KIỂU ĐỒ</th>
                             <th scope="col">THÔNG TIN</th>
                         </tr>
                     </thead>
@@ -54,13 +57,22 @@
                             <td style="width: 25%;"><input name="gia_Nhap" type="number"></td>
                             <td style="width: 25%;"><input name="gia_Ban" type="number"></td>
                             <td style="width: 25%;">
-                                <select id="loaiSanPham" name="loai" class="loai" onchange="thongTinMau(document.getElementById('tenSanPham').value, this.value)"></select>
+                                <select id="loaiSanPham" name="loai" class="loai" onchange="thongTinChiTietLoai(this.value)"></select>
+                            </td>
+                            <td style="width: 25%;">
+                                <select class="chi_tiet_loai" name="chi_tiet_loai" onchange="thongTinMau(document.getElementById('tenSanPham').value, this.value)"></select>
                             </td>
                             <td style="width: 25%;">
                                 <select class="mau" name="mau" onchange="thongTinSize(document.getElementById('tenSanPham').value, this.value)"></select>
                             </td>
                             <td style="width: 25%;">
                                 <select class="size" name="size"></select>
+                            </td>
+                            <td style="width: 25%;">
+                                <select class="chat_lieu" name="chat_lieu" onchange="thongTinChatLieu(document.getElementById('tenSanPham').value, this.value)"></select>
+                            </td>
+                            <td style="width: 25%;">
+                                <select class="kieu_do" name="kieu_do"></select>
                             </td>
                             <td style="width: 25%;"><textarea rows="4" cols="50" name="thong_Tin"></textarea></td>
                         </tr>
@@ -123,6 +135,30 @@
         });
     }
 
+    function thongTinChiTietLoai(loai) {
+        $.ajax({
+            method: "GET",
+            url: "{{ route('san-pham.lay-thong-tin-san-pham-chi-tiet-loai') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "loai": loai,
+            },
+        }).done(function(response) {
+            $('.chi_tiet_loai').empty().append('<option></option>');
+            let addedValues = new Set();
+            if (response.success && response.data.length > 0) {
+                response.data.forEach(function(item) {
+                    if (!addedValues.has(item.id)) {
+                        $('.chi_tiet_loai').append(`<option value="${item.id}">${item.ten}</option>`);
+                        addedValues.add(item.id);
+                    }
+                });
+            } else {
+                console.log("Không có thông tin về chi tiết loại");
+            }
+        });
+    }
+
     function thongTinMau(sanPham, loai) {
         $.ajax({
             method: "GET",
@@ -173,9 +209,58 @@
             }
         });
     }
+
+    function thongTinChatLieu(sanPham, size) {
+        $.ajax({
+            method: "GET",
+            url: "{{ route('san-pham.lay-thong-tin-san-pham-chat-lieu') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "sanPham": sanPham,
+                "size": size
+            },
+        }).done(function(response) {
+            $('.chat_lieu').empty().append('<option></option>');
+            let addedValues = new Set();
+            if (response.success && response.data.length > 0) {
+                response.data.forEach(function(item) {
+                    if (!addedValues.has(item.chat_lieu.id)) {
+                        $('.chat_lieu').append(`<option value="${item.chat_lieu.id}">${item.chat_lieu.ten}</option>`);
+                        addedValues.add(item.chat_lieu.id);
+                    }
+                });
+            } else {
+                console.log("Không có thông tin về chất liệu");
+            }
+        });
+    }
+
+    function thongTinKieuDo(chatLieu, size) {
+        $.ajax({
+            method: "GET",
+            url: "{{ route('san-pham.lay-thong-tin-san-pham-kieu-do') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "chatLieu": chatLieu,
+                "size": size
+            },
+        }).done(function(response) {
+            $('.kieu_do').empty().append('<option></option>');
+            let addedValues = new Set();
+            if (response.success && response.data.length > 0) {
+                response.data.forEach(function(item) {
+                    if (!addedValues.has(item.kieu_do.id)) {
+                        $('.kieu_do').append(`<option value="${item.kieu_do.id}">${item.kieu_do.ten}</option>`);
+                        addedValues.add(item.kieu_do.id);
+                    }
+                });
+            } else {
+                console.log("Không có thông tin về kiểu đồ");
+            }
+        });
+    }
 </script>
 @endsection
-
 
 @section('chon')
 <a href="/" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>THỐNG KÊ</a>
@@ -199,4 +284,4 @@
 
 @if(session('thong_bao'))
     <script>alert("{{ session('thong_bao') }}")</script>
-@endif
+@endif -->

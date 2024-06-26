@@ -7,6 +7,8 @@ use App\Models\SanPham;
 use App\Models\Loai;
 use App\Models\Mau;
 use App\Models\Size;
+use App\Models\ChatLieu;
+use App\Models\KieuDo;
 
 use App\Models\ChiTietSanPham;
 use App\Models\SlideShow;
@@ -42,6 +44,9 @@ class SanPhamAPIController extends Controller
             $ctsp->size;
             $ctsp->loai;
             $ctsp->mau;
+            $ctsp->chat_lieu;
+            $ctsp->kieu_do;
+
         }
 
 

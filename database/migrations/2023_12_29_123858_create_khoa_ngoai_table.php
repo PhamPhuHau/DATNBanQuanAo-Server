@@ -22,21 +22,21 @@ return new class extends Migration
         Schema::table('chi_tiet_san_pham', function (Blueprint $table) {
             $table->foreign('san_pham_id')->references('id')->on('san_pham');
         });
-        
+
         Schema::table('chi_tiet_san_pham', function (Blueprint $table) {
             $table->foreign('mau_id')->references('id')->on('mau');
         });
-        
+
         Schema::table('chi_tiet_san_pham', function (Blueprint $table) {
             $table->foreign('size_id')->references('id')->on('size');
         });
 
-        
+
         Schema::table('nhap_hang', function (Blueprint $table) {
             $table->foreign('nha_cung_cap_id')->references('id')->on('nha_cung_cap');
         });
 
-        
+
         Schema::table('chi_tiet_nhap_hang', function (Blueprint $table) {
             $table->foreign('san_pham_id')->references('id')->on('san_pham');
         });
@@ -81,7 +81,7 @@ return new class extends Migration
             $table->foreign('binh_luan_cap_mot_id')->references('id')->on('binh_luan_cap_mot');
         });
 
-  
+
 
         Schema::table('danh_gia', function (Blueprint $table) {
             $table->foreign('san_pham_id')->references('id')->on('san_pham');
